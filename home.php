@@ -230,7 +230,14 @@ if (!isset($_SESSION['user_id'])) {
       <div class="detectors fade-in">
       <div class="detector-card card">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <div class="section-title"><span class="icon">🌊</span><span>Live Detection</span></div>
+          <div class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2C12 2 8 6 8 10C8 12.21 9.79 14 12 14C14.21 14 16 12.21 16 10C16 6 12 2 12 2Z" fill="currentColor"/>
+  <path d="M12 16C9.33 16 4 17.33 4 20V22H20V20C20 17.33 14.67 16 12 16Z" fill="currentColor"/>
+  <circle cx="12" cy="10" r="2" fill="white"/>
+</svg>
+  
+          <span>Live Detection</span></div>
           <div class="muted">Status: <span id="statusText">idle</span></div>
         </div>
 
@@ -267,12 +274,26 @@ if (!isset($_SESSION['user_id'])) {
 
       <div style="display:flex;flex-direction:column;gap:12px">
         <div class="card detector-card fade-in">
-          <div class="section-title"><span class="icon">📈</span><span>Today's Summary</span></div>
+          <div class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3 3V21H21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M7 17L11 13L15 16L20 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="7" cy="17" r="1.5" fill="currentColor"/>
+  <circle cx="11" cy="13" r="1.5" fill="currentColor"/>
+  <circle cx="15" cy="16" r="1.5" fill="currentColor"/>
+  <circle cx="20" cy="9" r="1.5" fill="currentColor"/>
+</svg>  
+          <span>Today's Summary</span></div>
           <div id="todaySummary" style="margin-top:8px;font-size:13px;line-height:1.6;word-break:break-word" class="muted">Loading...</div>
         </div>
 
         <div class="card detector-card fade-in">
-          <div class="section-title"><span class="icon">⚙️</span><span>Instructions & Safety</span></div>
+          <div class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="3" fill="currentColor"/>
+  <path d="M12 1V4M12 20V23M4.22 4.22L6.34 6.34M17.66 17.66L19.78 19.78M1 12H4M20 12H23M4.22 19.78L6.34 17.66M17.66 6.34L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>  
+          <span>Instructions & Safety</span></div>
           <div style="margin-top:8px;font-size:13px;line-height:1.6;word-break:break-word" class="muted">
             <ul style="margin-left:16px">
               <li>Camera & mic run locally in your browser. No camera frames/audio are uploaded — only small emotion metadata is saved.</li>
@@ -299,17 +320,57 @@ if (!isset($_SESSION['user_id'])) {
     </section>
 
     <section style="margin-top:18px">
-      <div class="section-title"><span class="icon">✨</span><span>Quick Actions</span></div>
-      <div class="quick-grid">
-        <a class="quick-btn" href="daily-log.php"><div class="quick-icon">📖</div><span>Diary</span></a>
-        <a class="quick-btn" href="calendar.php"><div class="quick-icon">📅</div><span>Calendar</span></a>
-        <a class="quick-btn" href="calming-tools.php"><div class="quick-icon">💚</div><span>Calming Tools</span></a>
-        <a class="quick-btn" href="flashcard.php"><div class="quick-icon">💬</div><span>Flashcards</span></a>
+      <div class="section-title">
+      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+  <circle cx="12" cy="12" r="2" fill="white"/>
+</svg>  
+      <span>Quick Actions</span></div>
+       <div class="quick-grid">
+    <a class="quick-btn" href="daily-log.php">
+      <div class="quick-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 19.5C4 20.163 4.26339 20.7989 4.73223 21.2678C5.20107 21.7366 5.83696 22 6.5 22H20V2H6.5C5.83696 2 5.20107 2.26339 4.73223 2.73223C4.26339 3.20107 4 3.83696 4 4.5V19.5Z" fill="currentColor"/>
+          <path d="M8 6H16M8 10H16M8 14H12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
       </div>
+      <span>Diary</span>
+    </a>
+    <a class="quick-btn" href="calendar.php">
+      <div class="quick-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="18" rx="2" fill="currentColor"/>
+          <path d="M16 2V6M8 2V6M3 10H21" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+      <span>Calendar</span>
+    </a>
+    <a class="quick-btn" href="calming-tools.php">
+      <div class="quick-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <span>Calming Tools</span>
+    </a>
+    <a class="quick-btn" href="flashcard.php">
+      <div class="quick-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <span>Flashcards</span>
+    </a>
     </section>
 
     <section style="margin-top:20px">
-      <div class="section-title"><span class="icon">📈</span><span>Today's Insights</span></div>
+      <div class="section-title">
+      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="3" y="12" width="4" height="9" rx="1" fill="currentColor"/>
+  <rect x="10" y="8" width="4" height="13" rx="1" fill="currentColor"/>
+  <rect x="17" y="3" width="4" height="18" rx="1" fill="currentColor"/>
+</svg>  
+      <span>Today's Insights</span></div>
       <div class="insights-wrap">
         <div class="summary-card">
           <div class="label">Daily Summary</div>
@@ -324,9 +385,29 @@ if (!isset($_SESSION['user_id'])) {
         <div>
           <div class="recommend">
             <div class="label" style="margin-bottom:8px">Recommended for You</div>
-            <div class="rec-item"><div class="rec-icon">📷</div><div>Capture this happy moment with a photo or journal entry</div></div>
-            <div class="rec-item"><div class="rec-icon">✨</div><div>Your energy is high - great time for a creative activity</div></div>
-            <div class="rec-item"><div class="rec-icon">💬</div><div>Reflect on what made today feel good</div></div>
+            <div class="rec-item">
+            <div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8C1 7.46957 1.21071 6.96086 1.58579 6.58579C1.96086 6.21071 2.46957 6 3 6H7L9 3H15L17 6H21C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8V19Z" fill="currentColor"/>
+    <circle cx="12" cy="13" r="3" fill="white"/>
+  </svg>
+</div>  
+            <div>Capture this happy moment with a photo or journal entry</div></div>
+            <div class="rec-item">
+            <div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+    <circle cx="12" cy="12" r="2" fill="white"/>
+  </svg>
+</div>  
+            <div>Your energy is high - great time for a creative activity</div></div>
+            <div class="rec-item">
+            <div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" fill="currentColor"/>
+  </svg>
+</div>  
+            <div>Reflect on what made today feel good</div></div>
           </div>
           <div class="affirmation">"You're doing amazing today" — Keep nurturing these positive feelings</div>
         </div>
@@ -700,11 +781,28 @@ if (!isset($_SESSION['user_id'])) {
       let recHTML = '';
       const score = Number(data.combined_score) || 0;
       if (score >= 70) {
-        recHTML += `<div class="rec-item"><div class="rec-icon">✨</div><div>You're doing great — keep the momentum!</div></div>`;
+        recHTML += `<div class="rec-item"><div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+    <circle cx="12" cy="12" r="2" fill="white"/>
+  </svg>
+</div><div>You're doing great — keep the momentum!</div></div>`;
       } else if (score >= 40) {
-        recHTML += `<div class="rec-item"><div class="rec-icon">🧘</div><div>Try a calming tool to stabilize your emotions.</div></div>`;
+        recHTML += `<div class="rec-item"><div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="8" r="3" fill="currentColor"/>
+    <path d="M12 11C12 11 8 13 8 16V20H16V16C16 13 12 11 12 11Z" fill="currentColor"/>
+    <path d="M4 16L8 14M20 16L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div><div>Try a calming tool to stabilize your emotions.</div></div>`;
       } else {
-        recHTML += `<div class="rec-item"><div class="rec-icon">🤝</div><div>Consider journaling or talking to someone you trust.</div></div>`;
+        recHTML += `<div class="rec-item"><div class="rec-icon">
+  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" fill="currentColor"/>
+    <circle cx="9" cy="7" r="4" fill="currentColor"/>
+    <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div><div>Consider journaling or talking to someone you trust.</div></div>`;
       }
       recommend.innerHTML = `<div class="label" style="margin-bottom:8px">Recommended for You</div>${recHTML}`;
     }
