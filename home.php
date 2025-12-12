@@ -36,12 +36,7 @@ if (!isset($_SESSION['user_id'])) {
       height: 24px;
       fill: white;
     }
-    .quick-icon .icon-svg {
-      width: 22px;
-      height: 22px;
-      fill: #6f8b74;
-    }
-
+    
     *{
       box-sizing:border-box;
       margin:0;
