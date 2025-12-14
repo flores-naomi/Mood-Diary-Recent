@@ -31,7 +31,7 @@ This repository contains a small mood-tracking web app built with PHP (PDO), van
 - `calendar.php` — monthly overview and modal diary previews
 
 
-# Canva Prsentation Link 
+# Canva Presentation Link 
 
 ```bash
 https://www.canva.com/design/DAG7fig4MNM/ZQp9FnZyPqO7l7OZAp0YLg/edit?utm_content=DAG7fig4MNM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
