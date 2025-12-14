@@ -2,22 +2,35 @@
 // config/db.php
 declare(strict_types=1);
 
-const DB_HOST = 'mysql.railway.internal';
-const DB_NAME = 'railway';
-const DB_USER = 'root';
-const DB_PASS = 'qulqoaTkJsDeaNyMjWeFrhititwvLNVS'; 
-const DB_PORT = 3306;
-
-
 function getPDO(): PDO {
     static $pdo = null;
+
     if ($pdo === null) {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+        // Get the full MySQL URL from Railway environment variable
+        $databaseUrl = getenv('mysql://root:RwYKZSFEKSQwKKQfKtqHJaEZzmyDttdY@mysql.railway.internal:3306/railway');
+
+        if (!$databaseUrl) {
+            die("Database URL not set in environment variables.");
+        }
+
+        // Parse the URL into components
+        $urlParts = parse_url($databaseUrl);
+
+        $host = $urlParts['host'] ?? '';
+        $port = $urlParts['port'] ?? 3306;
+        $dbname = ltrim($urlParts['path'] ?? '', '/'); // Remove leading slash
+        $user = $urlParts['user'] ?? '';
+        $pass = $urlParts['pass'] ?? '';
+
+        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ];
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+
+        $pdo = new PDO($dsn, $user, $pass, $options);
     }
+
     return $pdo;
 }
