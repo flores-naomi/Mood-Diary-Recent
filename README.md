@@ -30,6 +30,17 @@ This repository contains a small mood-tracking web app built with PHP (PDO), van
 - `daily-log.php` — full editor with live detection, diary, tags and media upload
 - `calendar.php` — monthly overview and modal diary previews
 
+# Live Site Link 
+
+```bash
+moodtracker-production-e1c4.up.railway.app
+```
+
+# Video Presentation Link 
+
+```bash
+
+```
 
 # Canva Presentation Link 
 
