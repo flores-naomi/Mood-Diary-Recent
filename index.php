@@ -194,7 +194,7 @@
     // Fallback redirect in case meta refresh doesn't work
     setTimeout(function() {
       window.location.href = 'login.php';
-    }, 100);
+    }, 6000);
   </script>
 </body>
 </html>
