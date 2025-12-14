@@ -393,9 +393,6 @@ let currentSound = null;
 let soundNodes = {};
 let currentAudio = null; // HTML5 Audio element
 
-// Sound file paths - using royalty-free direct URLs from reliable CDN sources
-// Multiple fallback URLs per sound for better reliability
-// Volume is set to 0.8 (80%) for louder playback
 const soundFiles = {
   rain: [
     'https://cdn.pixabay.com/download/audio/2022/03/15/audio_9f5a353a0d.mp3?filename=rain-on-window-ambient-110624.mp3',
@@ -517,47 +514,47 @@ function playSound(soundId) {
       const audioFile = audioUrls[index];
       const audio = new Audio(audioFile);
       audio.loop = true;
-      audio.volume = 0.8; // Increased volume (0.0 to 1.0) - was 0.5, now 0.8
+      audio.volume = 0.8; 
       
       audio.addEventListener('error', (e) => {
         console.log(`Audio URL ${index + 1} failed: ${audioFile}, trying next...`);
-        // Try next URL
+     
         tryPlayAudio(index + 1);
       });
       
       audio.addEventListener('canplay', () => {
         audio.play().catch(err => {
           console.log('Audio play failed:', err);
-          // Try next URL
+   
           tryPlayAudio(index + 1);
         });
       });
       
       audio.addEventListener('loadeddata', () => {
-        // Audio loaded successfully
+      
         currentAudio = audio;
         currentSound = soundId;
         updateSoundUI(soundId, true);
       });
       
-      // Try to play immediately
+      
       audio.play().then(() => {
-        // Success! Audio is playing
+       
         currentAudio = audio;
         currentSound = soundId;
         updateSoundUI(soundId, true);
       }).catch(err => {
-        // If play fails, try next URL
+        
         if (currentAudio !== audio) {
           tryPlayAudio(index + 1);
         }
       });
     }
     
-    // Start trying URLs from the first one
+   
     tryPlayAudio(0);
   } else {
-    // No file specified, use generated sound
+ 
     playGeneratedSound(soundId);
   }
 }

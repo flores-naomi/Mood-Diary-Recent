@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
   header('Location: /login.php');
   exit;
 }
-// Standalone calendar view for the mood tracker UI
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -366,10 +366,10 @@ if (!isset($_SESSION['user_id'])) {
     const monthLabel = document.getElementById('monthLabel');
     const grid = document.getElementById('calendarGrid');
     let current = new Date();
-    let moodMap = {}; // Will be populated from API
+    let moodMap = {}; 
 
     function formatDate(date){
-      // Use local date, not UTC
+     
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
@@ -512,8 +512,7 @@ if (!isset($_SESSION['user_id'])) {
       loadMonthMoods();
     });
 
-    // Update today's mood in sidebar
-    
+ 
     loadMonthMoods();
     
     // Modal helpers
@@ -561,7 +560,7 @@ if (!isset($_SESSION['user_id'])) {
         setTimeout(() => {
           toastContainer.classList.remove('show','hide');
         }, 200);
-      }, 1600); // slightly faster auto-hide
+      }, 1600); 
     }
 
     closeModal.addEventListener('click', hideDiaryModal);
@@ -615,7 +614,7 @@ if (!isset($_SESSION['user_id'])) {
             mediaItem.appendChild(link);
           }
           
-          // Add delete button in edit mode
+      
           if (editMode) {
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = '✕';
@@ -725,14 +724,14 @@ if (!isset($_SESSION['user_id'])) {
         }
       }
 
-      // hide post-style preview (not using this design)
+      // hide post-style preview 
       const modalPost = document.getElementById('modalPostPreview');
       if (modalPost) {
         modalPost.style.display = 'none';
         modalPost.innerHTML = '';
       }
 
-      // Render media list (not in edit mode initially)
+      // Render media list 
       renderMediaList(currentMediaData, false);
       
       // Hide edit UI initially

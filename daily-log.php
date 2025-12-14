@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
   header('Location: /login.php');
   exit;
 }
-// Standalone Daily Log page matching the provided UI mock
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -929,7 +929,7 @@ if (!isset($_SESSION['user_id'])) {
       saveBtn.textContent = '⏳ Saving...';
 
       try {
-        // Step 1: Create diary entry
+        
         const diaryRes = await fetch('api/save_diary.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -942,7 +942,7 @@ if (!isset($_SESSION['user_id'])) {
         lastDiaryId = diaryId;
         console.log('✅ Diary saved with ID:', lastDiaryId);
 
-        // Step 2: Save mood log with device status and diary link
+      
         const moodPayload = {
           date: currentDate,
           face_emotion: mood,
@@ -968,7 +968,7 @@ if (!isset($_SESSION['user_id'])) {
         if (!moodData.ok) throw new Error('Mood save failed: ' + moodData.error);
         const moodId = moodData.id;
 
-        // Step 3: Save tags linked to mood_id
+      
         if (tags.length > 0) {
           const tagsRes = await fetch('api/save_mood_tags.php', {
             method: 'POST',
@@ -999,7 +999,7 @@ if (!isset($_SESSION['user_id'])) {
       }
     });
 
-    // --- Live detection functions (adapted from home) ---
+  
     const webcamEl = document.getElementById('webcam');
     const overlay = document.getElementById('overlay');
     const statusTextEl = document.getElementById('statusText');
@@ -1078,7 +1078,7 @@ if (!isset($_SESSION['user_id'])) {
           const expressions = detections.expressions;
           let top = { name: null, score: 0 };
           Object.keys(expressions).forEach(k => { if (expressions[k] > top.score) top = { name: k, score: expressions[k] }; });
-          // Update face UI
+       
           const name = top.name ? top.name.charAt(0).toUpperCase() + top.name.slice(1) : '—';
           document.getElementById('faceEmotion').textContent = name;
           document.getElementById('faceConfidence').textContent = `${Math.round((top.score||0)*100)}%`;
@@ -1162,7 +1162,7 @@ if (!isset($_SESSION['user_id'])) {
     // track last detected mood to avoid frequent saves
     let lastDetectedMood = null;
     let lastSavedDetectedMood = null;
-    let lastDetectionSavedAt = 0; // timestamp ms
+    let lastDetectionSavedAt = 0; 
 
     function computeAndShowScore(faceName, faceConf, audioName, audioScoreVal){
       if (faceName) lastFace = { name: faceName.toLowerCase(), score: faceConf };

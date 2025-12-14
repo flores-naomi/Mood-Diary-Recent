@@ -147,7 +147,7 @@ try {
     echo json_encode(['ok' => true, 'id' => $resultId]);
 } catch (Exception $e) {
     http_response_code(500);
-    // don't leak exception messages in production; log them instead
+
     error_log($e->getMessage());
     echo json_encode(['error' => 'Server error']);
 }

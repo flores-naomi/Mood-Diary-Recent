@@ -1,6 +1,5 @@
 <?php
 // scripts/test_end_to_end.php
-// Quick local test: insert/update today's mood for user 1 and include API endpoints to verify outputs
 require_once __DIR__ . '/../config/db.php';
 session_start();
 $_SESSION['user_id'] = 1;
