@@ -699,7 +699,8 @@ if (!isset($_SESSION['user_id'])) {
         if (moodRes.ok) {
           const moodData = await moodRes.json();
           if (moodData.tags && moodData.tags.length > 0) {
-            currentMoodTag = moodData.tags[0].tag_name;
+            const firstTag = moodData.tags[0];
+            currentMoodTag = (typeof firstTag === 'object' && firstTag.tag_name) ? firstTag.tag_name : firstTag;
             const moodEmoji = {
               'Happy': '😊', 'Calm': '🙂', 'Sad': '😢', 
               'Stressed': '😰', 'Neutral': '😐', 'Tired': '😴'

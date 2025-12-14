@@ -377,22 +377,39 @@ if (!isset($_SESSION['user_id'])) {
 
     <section class="section">
       <div class="section-title">Write Your Thoughts</div>
-      <div class="note-card">
-        <textarea id="diaryText" class="note-area" placeholder="How was your day? What happened?..."></textarea>
-        <div class="note-actions">
-          <div style="display:flex;align-items:center;gap:8px">
-            <button class="btn primary" id="stt">🎙️ Speech-to-Text</button>
-            <button class="btn primary" id="saveEntry">💾 Save Entry</button>
-          </div>
-          <div style="display:flex;gap:8px;color:var(--muted);font-size:14px;cursor:pointer;">
-            <label style="cursor:pointer;">
-              📷
-              <input type="file" id="mediaInput" style="display:none;" accept="image/*,video/*">
-            </label>
-          </div>
-          <div id="mediaPreview" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"></div>
-        </div>
+        <div class="note-card">
+    <textarea id="diaryText" class="note-area" placeholder="How was your day? What happened?..."></textarea>
+    <div class="note-actions">
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="btn primary" id="stt" aria-label="Start speech to text">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <path d="M5 10v1a7 7 0 0014 0v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span class="btn-label">Speech-to-Text</span>
+        </button>
+        <button class="btn primary" id="saveEntry" aria-label="Save diary entry">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v13a2 2 0 01-2 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M7 3v6h8V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-label">Save Entry</span>
+        </button>
+        <label class="btn primary file-btn" for="mediaInput" style="cursor:pointer;align-items:center;">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <circle cx="8.5" cy="10" r="1.5" fill="currentColor"/>
+            <path d="M21 15l-5-5-6 6-3-3-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-label">Add Attachment</span>
+          <input type="file" id="mediaInput" style="display:none;" accept="image/*,video/*">
+        </label>
       </div>
+      <div id="mediaPreview" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+  </div>
     </section>
 
     <section class="section">
@@ -663,14 +680,15 @@ if (!isset($_SESSION['user_id'])) {
       }
       const recognition = new SpeechRecognition();
       recognition.start();
-      document.getElementById('stt').textContent = '🎙️ Listening...';
+      const sttLabel = document.querySelector('#stt .btn-label');
+      if (sttLabel) sttLabel.textContent = 'Listening...';
       recognition.onresult = (e) => {
         const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
         document.getElementById('diaryText').value += transcript + ' ';
-        document.getElementById('stt').textContent = '🎙️ Speech-to-Text';
+        if (sttLabel) sttLabel.textContent = 'Speech-to-Text';
       };
       recognition.onerror = () => {
-        document.getElementById('stt').textContent = '🎙️ Speech-to-Text';
+        if (sttLabel) sttLabel.textContent = 'Speech-to-Text';
       };
     });
 
