@@ -2,10 +2,12 @@
 // config/db.php
 declare(strict_types=1);
 
-const DB_HOST = '127.0.0.1';
-const DB_NAME = 'mood_tracker';
+const DB_HOST = 'mysql.railway.internal';
+const DB_NAME = 'railway';
 const DB_USER = 'root';
-const DB_PASS = ''; 
+const DB_PASS = 'qulqoaTkJsDeaNyMjWeFrhititwvLNVS'; 
+const DB_PORT = 3306;
+
 
 function getPDO(): PDO {
     static $pdo = null;
