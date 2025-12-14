@@ -49,7 +49,7 @@ moodtracker-production-e1c4.up.railway.app
 https://www.canva.com/design/DAG7fig4MNM/ZQp9FnZyPqO7l7OZAp0YLg/edit?utm_content=DAG7fig4MNM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ```
 
-Quick start (local dev)
+# Quick start (local dev)
 
 1. Copy the DB dump and import into your local MariaDB/MySQL instance (phpMyAdmin or CLI):
 
@@ -116,7 +116,56 @@ Troubleshooting
   - `daily-log: refreshed due to dayUpdated event`
 
 
+# Live Site Deployment in Railway
+We integrated PostgreSQL as the online database for the system. Previously, the system only supported a local database, which caused a server error when deployed online—even though the UI was loading correctly. With this update, the system now supports both online and local databases, using PostgreSQL for online deployment and MySQL for local development.
 
+The following code was added to detect whether PostgreSQL is available:
+```bash
+$use_postgres = !empty($_ENV['DATABASE_URL']) || 
+               (!empty($_ENV['PGHOST']) && !empty($_ENV['PGDATABASE']) && 
+                !empty($_ENV['PGUSER']) && !empty($_ENV['PGPASSWORD']));
+
+```
+
+This logic allows Railway to detect whether a PostgreSQL service is configured in the system. Once PostgreSQL is detected, the application automatically connects using the following logic:
+```bash
+if (!empty($_ENV['DATABASE_URL'])) {
+    // Parse DATABASE_URL: postgresql://user:password@host:port/database
+    $url = parse_url($_ENV['DATABASE_URL']);
+    $dsn = sprintf(
+        "pgsql:host=%s;port=%s;dbname=%s",
+        $url['host'],
+        $url['port'] ?? 5432,
+        ltrim($url['path'], '/')
+    );
+    $user = $url['user'];
+    $pass = $url['pass'];
+}
+```
+
+# Steps to Add PostgreSQL in Railway
+Step 1: Add PostgreSQL Service
+Go to the Railway Dashboard
+- Visit railway.app and open your Mood Tracker project.
+
+Create the PostgreSQL Database
+- Click the New button, select Database, then choose Add PostgreSQL.
+- Wait for Railway to finish provisioning the database, which usually takes one to two minutes.
+- Once completed, a new PostgreSQL service will appear in your project.
+
+Link the Database to the Application
+- Railway automatically creates a DATABASE_URL environment variable.
+- This variable is automatically linked to your application service.
+The connection string will look similar to:
+```bash
+postgresql://postgres:password@hostname:5432/railway
+```
+
+Step 2: Verify the Database Connection
+
+- The application automatically detects PostgreSQL using the DATABASE_URL environment variable.
+- Database tables are created automatically on first use via api/init.php.
+- You may also initialize the database manually by visiting the initialization endpoint.
 ---
 
 Last updated: December 14, 2025
